@@ -2,5 +2,10 @@
 name = "uk-bank-details-validator"
 version = "0.1.0"
 edition = "2024"
+build = "build/main.rs"
 
 [dependencies]
+
+[features]
+default = ["std"]
+std = []
