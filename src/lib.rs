@@ -6,7 +6,11 @@
 mod build_parse;
 
 mod account_number;
+mod error;
 mod sort_code;
+mod validation;
 
 pub use account_number::{AccountNumber, AccountNumberError};
+pub use error::ParseError;
 pub use sort_code::{SortCode, SortCodeError};
+pub use validation::Validation;
