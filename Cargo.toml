@@ -2,10 +2,36 @@
 name = "uk-bank-details-validator"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85"
+description = "Validate UK sort code and account number pairs using the Vocalink modulus checking specification"
+documentation = "https://docs.rs/uk-bank-details-validator"
+repository = "https://github.com/bp7968h/uk-bank-details-validator"
+readme = "README.md"
+license = "MIT"
+keywords = ["sortcode", "bank-account", "modulus", "bacs", "uk"]
+categories = ["finance", "no-std", "no-std::no-alloc", "parser-implementations"]
 build = "build/main.rs"
 
-[dependencies]
+include = [
+    "build/**/*.rs",
+    "data/valacdos.txt",
+    "data/scsubtab.txt",
+    "src/**/*.rs",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+]
 
 [features]
 default = ["std"]
+# Implements std::error::Error for the error types.
 std = []
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[dependencies]
