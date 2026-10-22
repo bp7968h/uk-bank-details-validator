@@ -2,7 +2,7 @@
 
 [![crates.io](https://img.shields.io/crates/v/uk-bank-details-validator.svg)](https://crates.io/crates/uk-bank-details-validator)
 [![docs.rs](https://img.shields.io/docsrs/uk-bank-details-validator)](https://docs.rs/uk-bank-details-validator)
-[![CI](https://github.com/bp7968h/uk-bank-details-validator/actions/workflows/ci.yml/badge.svg)](https://github.com/bp7968h/uk-bank-details-validator/actions/workflows/ci.yaml)
+[![CI](https://github.com/bp7968h/uk-bank-details-validator/actions/workflows/ci.yaml/badge.svg)](https://github.com/bp7968h/uk-bank-details-validator/actions/workflows/ci.yaml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bp7968h/uk-bank-details-validator/blob/main/LICENSE)
 
 Validate UK bank details (a **sort code** and **account number**) using the
