@@ -17,6 +17,7 @@ include = [
     "data/valacdos.txt",
     "data/scsubtab.txt",
     "src/**/*.rs",
+    "tests/**/*.rs",
     "CHANGELOG.md",
     "LICENSE",
     "README.md",
