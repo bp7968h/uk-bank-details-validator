@@ -1,3 +1,5 @@
+//! Build script: turns the Vocalink tables in data/ into Rust code.
+
 mod parse;
 
 use parse::{parse_row, parse_substitution, sort_code_rust};
@@ -15,6 +17,8 @@ fn main() {
         .unwrap_or_else(|e| panic!("failed to read {WEIGHT_TABLE_PATH}: {e}"));
     out.push_str("pub(crate) static WEIGHTS: &[WeightRow] = &[\n");
 
+    let mut previous: Option<(u32, u32)> = None;
+    let mut rows_in_range = 0;
     for (index, line) in weights.lines().enumerate() {
         if line.trim().is_empty() {
             continue;
@@ -22,6 +26,27 @@ fn main() {
         let row = parse_row(line)
             .unwrap_or_else(|e| panic!("{WEIGHT_TABLE_PATH} line {}: {e}", index + 1));
         writeln!(out, "{}", row.to_rust()).unwrap();
+        let range = (row.start, row.end);
+        match previous {
+            Some(prev) if prev == range => {
+                rows_in_range += 1;
+                assert!(
+                    rows_in_range <= 2,
+                    "{WEIGHT_TABLE_PATH} line {}: more than two rows for one range",
+                    index + 1
+                );
+            }
+            Some((_, prev_end)) => {
+                assert!(
+                    prev_end < row.start,
+                    "{WEIGHT_TABLE_PATH} line {}: range overlaps the previous one or is out of order",
+                    index + 1
+                );
+                rows_in_range = 1;
+            }
+            None => rows_in_range = 1,
+        }
+        previous = Some(range);
     }
     out.push_str("];\n\n");
 
