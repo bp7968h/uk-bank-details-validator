@@ -7,7 +7,7 @@ tables are listed under **Data**.
 
 ## [Unreleased]
 
-## [0.1.0] - YYYY-MM-DD (TBC)
+## [0.1.0] - 2026-10-26
 
 ### Added
 
